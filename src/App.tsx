@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import { keyframes } from 'styled-components'
 
-class App extends Component {
+interface IState {
+  counter : number;
+}
+class App extends Component<{}, IState> {
+  state ={
+    counter: 0
+  }
   render() {
+    const {counter} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-        </header>
-      </div>
+    <div> 
+      {counter} <button onClick={this.add}>Add</button>
+    </div>
     );
   }
+  add = () => {
+
+    this.setState(prev => {
+      return {counter : prev.counter +1};
+    });
+  };
 }
 
 export default App;
